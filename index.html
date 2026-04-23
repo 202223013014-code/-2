@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卢泓臻 - 个人作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --brand-orange: #f26b21;
+            --text-main: #111111;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden; /* Prevent body scroll, let main scroll */
+        }
+
+        .layout-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            z-index: 10;
+        }
+
+        .sidebar-logo {
+            padding: 2rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-nav {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-item {
+            font-weight: 500;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: flex-start;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--brand-orange);
+        }
+
+        .nav-number {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-left: 2px;
+            font-weight: 400;
+        }
+
+        .sidebar-footer {
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Section Layouts */
+        .content-section {
+            border-bottom: 1px solid var(--border-color);
+            padding: 5rem 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .section-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .section-title-wrapper {
+                width: 35%;
+            }
+            .section-desc-wrapper {
+                width: 55%;
+            }
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            display: flex;
+        }
+
+        .section-title sup {
+            color: var(--brand-orange);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            top: -1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        /* Typography Sub-headers like "3a Primary Palette" */
+        .sub-header {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sub-header-num {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Hero Gradient matching the reference */
+        .hero-gradient {
+            background: linear-gradient(135deg, #c4d7e0 0%, #e2d2ba 40%, #ee9e55 70%, #eb6f25 100%);
+            border-radius: 0 0 0 0; /* Reset for full bleed if needed, or rounded inner */
+        }
+        
+        .box-container {
+            background-color: #f3f4f6;
+            padding: 3rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Hide scrollbar for a cleaner look but keep functionality */
+        .main-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .main-content::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        .main-content::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layout-container">
+    <!-- Sidebar -->
+    <aside class="sidebar hidden md:flex">
+        <div class="sidebar-logo">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h14"></path>
+                <path d="M13 5l7 7-7 7"></path>
+                <path d="M3 12a9 9 0 0 1 9-9"></path>
+            </svg>
+            LuHongZhen
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#cover" class="nav-item">Cover<span class="nav-number">00</span></a>
+            <a href="#education" class="nav-item">教育背景<span class="nav-number">01</span></a>
+            <a href="#experience" class="nav-item">职业足迹<span class="nav-number">02</span></a>
+            <a href="#portfolio" class="nav-item">项目经验<span class="nav-number">03</span></a>
+            <a href="#operations" class="nav-item">运营数据<span class="nav-number">04</span></a>
+            <a href="#skills" class="nav-item">技能清单<span class="nav-number">05</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="mailto:18922028036@163.com" class="block hover:text-black mb-1">Email Me</a>
+            <span class="block">189-2202-8036</span>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- Hero Cover Section -->
+        <section id="cover" class="border-b border-gray-200">
+            <!-- Gradient Image Area -->
+            <div class="hero-gradient w-full h-[60vh] flex items-center justify-center p-8">
+                <h1 class="text-white text-6xl md:text-8xl font-bold tracking-tight drop-shadow-sm flex items-center gap-4">
+                    <svg class="w-16 h-16 md:w-24 md:h-24 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 14 4 9l5-5"></path>
+                        <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"></path>
+                    </svg>
+                    卢泓臻
+                </h1>
+            </div>
+            <!-- Cover Text Area -->
+            <div class="px-8 md:px-16 py-16 lg:py-24 flex flex-col md:flex-row gap-12 justify-between items-center">
+                <div class="md:w-1/2 flex justify-start">
+                    <h2 class="text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight">Personal<br>Portfolio</h2>
+                </div>
+                <div class="md:w-1/2 flex md:justify-end justify-start">
+                     <img src="美式证件照2.jpg" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="卢泓臻个人照片" class="w-64 md:w-80 rounded-lg shadow-xl object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 Education -->
+        <section id="education" class="content-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">教育背景<sup>01</sup></h2>
+                </div>
+                <div class="section-desc-wrapper">
+                    
+                </div>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="border border-gray-200 p-10">
+                    <h4 class="text-sm text-gray-500 font-semibold mb-3">山东大学 · 硕士</h4>
+                    <h3 class="text-3xl font-bold mb-4">宗教学</h3>
+                    <p class="text-gray-600 mb-8">主修课程：社会调查方法、宗教学概论</p>
+                    <p class="text-sm text-gray-400">2025.09 - 2028.06</p>
+                </div>
+                <div class="border border-gray-200 p-10">
+                    <h4 class="text-sm text-gray-500 font-semibold mb-3">山东大学 · 本科</h4>
+                    <h3 class="text-3xl font-bold mb-4">哲学</h3>
+                    <p class="text-gray-600 mb-8">荣誉：23年全国英语竞赛三等奖，24年全国英语竞赛二等奖。CET-6 (613分)</p>
+                    <p class="text-sm text-gray-400">2022.09 - 2026.06</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 Experience -->
+        <section id="experience" class="content-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">职业足迹<sup>02</sup></h2>
+                </div>
+                <div class="section-desc-wrapper">
+                    <p class="section-desc">在公关传播与舆情研究领域的深度实践，通过数据化监测与创意策划，构建品牌与受众之间的信任桥梁。</p>
+                </div>
+            </div>
+
+            <!-- Internship 1 -->
+            <div class="mt-12">
+                <div class="sub-header">
+                    <span class="sub-header-num">2a</span> 广州凡岛网络科技有限公司
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="lg:col-span-4 text-gray-500">
+                        公共关系与品牌传播实习生<br>2025.06 - 2025.08
+                    </div>
+                    <div class="lg:col-span-8 space-y-4 text-lg">
+                        <p><strong>品牌投放：</strong>搭建并优化小红书品牌内容投放体系，主导KOC筛选、内容审核及数据回收闭环。实现月均62万+阅读量，综合CPM优化至18.8。</p>
+                        <p><strong>评论铺设：</strong>设计并执行抖音平台高互动性评论文案与铺设策略，成功制造30余个千赞级热点，单条评论引爆8万点赞。</p>
+                        <p><strong>舆情监控：</strong>建立并维护每日舆情看板，将品牌内容正面率稳定维持在90%以上。全流程参与品牌发布会等公关活动。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-px bg-gray-200 my-16"></div>
+
+            <!-- Internship 2 -->
+            <div>
+                <div class="sub-header">
+                    <span class="sub-header-num">2b</span> 深圳媒体研究会
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="lg:col-span-4 text-gray-500">
+                        舆情分析实习生<br>2025.12 - 2026.02
+                    </div>
+                    <div class="lg:col-span-8 space-y-4 text-lg">
+                        <p><strong>舆情监测：</strong>构建覆盖路透社、彭博社及国内全网的核心渠道监测体系，实现日均精准处理信息1000+条。</p>
+                        <p><strong>风险研判：</strong>建立快速响应机制，负面舆情预警压缩至30分钟以内。协助处置中高风险事件40余起，阻断负面传播链条。</p>
+                        <p><strong>情报分析：</strong>主导舆情日报、周报撰写，累计输出高价值报告100余份，为管理层提供决策支持。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 Portfolio -->
+        <section id="portfolio" class="content-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">项目经验<sup>03</sup></h2>
+                </div>
+                <div class="section-desc-wrapper">
+                    <p class="section-desc">结合品牌传播逻辑与用户心理学，输出具有高度破圈能力的视觉内容与文案创意。</p>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <div class="sub-header">
+                    <span class="sub-header-num">3a</span> 日化产品营销
+                </div>
+                <div class="box-container flex items-center justify-center h-96">
+                    <img src="" alt="日化品牌营销案例图" class="h-full object-cover shadow-sm mix-blend-multiply">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 text-gray-600">
+                    <p>主导 KONO、WIS 及其它核心产品的全案内容规划。通过深挖产品功能痛点与场景体验，制定符合小红书平台语境的种草策略。</p>
+                    <p>打通内容共创壁垒，精确筛选不同层级的KOC，建立流畅的提报与审核标准，确保每一笔投放的曝光转化效益最大化。</p>
+                </div>
+            </div>
+            
+            <div class="mt-20">
+                <div class="sub-header">
+                    <span class="sub-header-num">3b</span> 小红书个人IP搭建
+                </div>
+                <div class="box-container flex items-center justify-center overflow-hidden">
+                    <img src="" alt="个人账号运营成果" class="w-full object-cover opacity-90 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="mt-8 text-gray-600 max-w-4xl">
+                    <p><strong>账号 @斜一下的至秦：</strong>从0到1孵化小红书校园生活类账号。完成239篇爆款笔记撰写，单篇最高阅读64万+。通过分析后台停留时长与转化率，不断优化内容方向，目前累计拥有1.9万+精准垂直粉丝，获赞与收藏总量超过50万+。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 Operations Data -->
+        <section id="operations" class="content-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">运营数据<sup>04</sup></h2>
+                </div>
+                <div class="section-desc-wrapper">
+                    <p class="section-desc">数据是检验策略的唯一真理。通过精准把控点击率、互动量与转化指标，驱动每一次内容的迭代与升级。</p>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <div class="sub-header mt-0">
+                        <span class="sub-header-num">4a</span> 评论区铺设战报
+                    </div>
+                    <div class="flex flex-col gap-6 mt-8">
+                        <div class="border-l-4 border-orange-500 pl-6">
+                            <h3 class="text-5xl font-bold text-gray-900 mb-2">18.4万+</h3>
+                            <p class="text-gray-500 uppercase tracking-widest text-sm">单条评论最高点赞数</p>
+                        </div>
+                        <div class="border-l-4 border-orange-500 pl-6">
+                            <h3 class="text-5xl font-bold text-gray-900 mb-2">21.9万+</h3>
+                            <p class="text-gray-500 uppercase tracking-widest text-sm">总互动杠杆撬动流量</p>
+                        </div>
+                        <p class="text-gray-600 mt-4 leading-relaxed">
+                            策略性占位与心智渗透。在抖音高优达人评论区，以神评论和前置埋点引导舆论，超额完成3个品牌千赞互动指标。将被动曝光完全转化为用户的自发认同与传播。
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="sub-header mt-0">
+                        <span class="sub-header-num">4b</span> 商务合作矩阵
+                    </div>
+                    <div class="mt-8">
+                        <img src="" alt="商务合作明细" class="w-full border border-gray-200">
+                        <p class="text-gray-600 mt-6 leading-relaxed">
+                            成功将线上流量变现为品牌传播力。深度操盘包含天猫、淘宝、科颜氏、必胜客、支付宝、Canva等30+知名品牌的商业植入，熟练把控从Brief解读、软广创意到结案复盘的全链路商务流。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 Skills -->
+        <section id="skills" class="content-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">技能清单<sup>05</sup></h2>
+                </div>
+                <div class="section-desc-wrapper">
+                    <p class="section-desc">积极拥抱前沿工具与技术变革，将设计美学与AI工作流完美结合，极大提升内容生产质量与效率。</p>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-900 flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">AI</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">AI 生产力</h4>
+                    <p class="text-gray-500">Gemini<br>ChatGPT<br>Deepseek<br>Coze工作流</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-900 flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">VD</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">视觉设计</h4>
+                    <p class="text-gray-500">Canva<br>Figma<br>Adobe Express<br>Recraft</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-900 flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">MV</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">视频与图文</h4>
+                    <p class="text-gray-500">PR剪辑<br>剪映<br>Runway / Sora<br>秀米排版</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 rounded-full border-2 border-gray-900 flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">DA</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">数据分析</h4>
+                    <p class="text-gray-500">蝉妈妈<br>千瓜数据<br>Excel<br>Xmind</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
