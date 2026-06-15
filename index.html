@@ -91,7 +91,15 @@
             text-decoration: none;
             display: flex;
             align-items: flex-start;
-            transition: color 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            width: fit-content;
+            padding: 0.45rem 0.8rem 0.5rem;
+            margin-left: -0.8rem;
+            border-radius: 0.95rem;
+            transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             font-size: 1.125rem;
         }
 
@@ -101,8 +109,30 @@
             }
         }
 
-        .nav-item:hover {
-            color: var(--brand-orange);
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #f26b21 0%, #f48845 100%);
+            border-radius: inherit;
+            transform: translateX(-105%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .nav-item:hover,
+        .nav-item:focus-visible {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .nav-item:hover::before,
+        .nav-item:focus-visible::before {
+            transform: translateX(0);
+        }
+
+        .nav-item:focus-visible {
+            outline: none;
         }
 
         .nav-number {
@@ -110,6 +140,14 @@
             color: var(--text-muted);
             margin-left: 4px;
             font-weight: 400;
+            transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-item:hover .nav-number,
+        .nav-item:focus-visible .nav-number {
+            color: rgba(255, 255, 255, 0.78);
+            transform: translateX(2px);
         }
 
         .sidebar-footer {
